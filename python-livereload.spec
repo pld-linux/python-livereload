@@ -6,13 +6,13 @@
 Summary:	LiveReload - tool for web developers
 Summary(pl.UTF-8):	LiveReload - narzędzie dla programistów WWW
 Name:		python-livereload
-Version:	2.6.0
-Release:	2
+Version:	2.6.1
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/livereload/
 Source0:	https://files.pythonhosted.org/packages/source/l/livereload/livereload-%{version}.tar.gz
-# Source0-md5:	99b72147b9a9bc37835a649e7a039a5a
+# Source0-md5:	7d155b74421b96a265f291404368d0da
 URL:		https://github.com/lepture/python-livereload
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
@@ -61,16 +61,19 @@ Python LiveReload jest niesamowitym narzędziem dla programistów WWW.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%if %{with python3}
-%py3_install
-
-%{__mv} $RPM_BUILD_ROOT%{_bindir}/livereload{,-3}
-%endif
-
 %if %{with python2}
 %py_install
 
 %py_postclean
+
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/livereload{,-2}
+%endif
+
+%if %{with python3}
+%py3_install
+
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/livereload{,-3}
+ln -s livereload-3 $RPM_BUILD_ROOT%{_bindir}/livereload
 %endif
 
 %clean
@@ -80,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.rst
-%attr(755,root,root) %{_bindir}/livereload
+%attr(755,root,root) %{_bindir}/livereload-2
 %{py_sitescriptdir}/livereload
 %{py_sitescriptdir}/livereload-%{version}-py*.egg-info
 %endif
@@ -89,6 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-livereload
 %defattr(644,root,root,755)
 %doc LICENSE README.rst
+%attr(755,root,root) %{_bindir}/livereload
 %attr(755,root,root) %{_bindir}/livereload-3
 %{py3_sitescriptdir}/livereload
 %{py3_sitescriptdir}/livereload-%{version}-py*.egg-info
