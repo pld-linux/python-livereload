@@ -39,6 +39,7 @@ Summary:	LiveReload - tool for web developers
 Summary(pl.UTF-8):	LiveReload - narzędzie dla programistów WWW
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.5
+Conflicts:	python-livereload < 2.6.1
 
 %description -n python3-livereload
 Python LiveReload is an awesome tool for web developers.
