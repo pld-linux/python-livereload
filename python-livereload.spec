@@ -7,7 +7,7 @@ Summary:	LiveReload - tool for web developers
 Summary(pl.UTF-8):	LiveReload - narzędzie dla programistów WWW
 Name:		python-livereload
 Version:	2.6.3
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/livereload/
